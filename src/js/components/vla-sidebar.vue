@@ -1,7 +1,7 @@
 <template>
     <div class="vla-sidebar" :class="{wide}">
-        <div class="mb-6">
-            <a @click="toggleWide" class="vla-sidebar-link">
+        <div class="h-14 flex items-center" :class="{'justify-around': !wide}">
+            <a @click="toggleWide" class="vla-sidebar-link 2xl block p-2">
                 <i class="fal fa-align-left"></i>
             </a>
         </div>
@@ -13,6 +13,11 @@
             </router-link>
             
             <div v-if="route.children" class="vla-submenu">
+                <div class="absolute text-blue-darkest pin-l mt-4">
+                    <svg height="10" width="8" fill="currentColor">
+                        <polygon points="8,0 8,10 1,5" />
+                    </svg>
+                </div>
                 <div class="vla-submenu-items">
                     <div v-for="child in route.children">
                         <router-link :to="child.path" class="vla-submenu-link">
@@ -45,6 +50,8 @@ export default {
 .vla-sidebar{
     @apply w-20 bg-blue-darkest text-grey flex flex-col text-center;
 
+    transition: width .5s;
+
     &.wide{
         @apply w-48 text-left;
 
@@ -56,7 +63,7 @@ export default {
 }
 
 .vla-sidebar-link{
-    @apply block py-4 text-white no-underline text-grey-light text-xl cursor-pointer;
+    @apply block py-4 text-white no-underline text-grey-light text-xl cursor-pointer whitespace-no-wrap overflow-hidden;
 
     &.router-link-active{
         @apply bg-blue-dark;
@@ -79,7 +86,7 @@ export default {
     }
 
     .vla-submenu{
-        @apply hidden absolute pin-t w-64 ml-20 pl-2;
+        @apply hidden absolute pin-t w-64 ml-20 pl-2 z-50;
 
         .vla-submenu-items{
             @apply bg-blue-darkest shadow-lg rounded text-left py-2;

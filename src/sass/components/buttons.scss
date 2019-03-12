@@ -1,0 +1,27 @@
+.btn {
+    @apply py-2 px-4 rounded text-sm cursor-pointer;
+    
+    i{
+        @apply text-base;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.btn-primary {
+    @apply bg-blue text-white;
+
+    &:hover {
+        @apply bg-blue-dark;
+    }
+}
+
+.btn-default {
+    @apply bg-grey-dark text-white;
+
+    &:hover {
+        @apply bg-grey-darker;
+    }
+}

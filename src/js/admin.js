@@ -8,11 +8,16 @@ const router = new VueRouter({
     mode   : 'history'
 })
 
-window.Vue = require('vue')
-Vue.use(VueRouter)
+import Vue from 'vue'
+import ElementUI from 'element-ui'
 
+Vue.use(VueRouter)
+Vue.use(ElementUI)
+
+Vue.component('vla-page', require('./components/vla-page').default)
 Vue.component('vla-sidebar', require('./components/vla-sidebar').default)
-Vue.component('vla-header', require('./components/vla-header').default)
+Vue.component('vla-rightbar', require('./components/vla-rightbar').default)
+Vue.component('vla-panel', require('./components/vla-panel').default)
 
 window.vue = new Vue({
     router,
